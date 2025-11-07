@@ -7,16 +7,17 @@ use Slim\Factory\AppFactory;
 use Slim\Http\Request;
 
 $app = AppFactory::create();
-//$boissonControleur = new \App\Controleur\Controleur_Boisson();
+$boissonControleur = new \App\Controleur\Controleur_Boisson($entityManager);
 $categorieControleur = new \App\Controleur\Controleur_Categorie($entityManager);
 
-/*
+
 $app->get('/boisson', [$boissonControleur, 'Accueil']);
 $app->get('/boisson/creation', [$boissonControleur, 'Creation']);
-$app->get('/boisson/suppression/{idBoisson}', [$boissonControleur, 'Suppression']);
+$app->post('/boisson/creer', [$boissonControleur, 'Creer']);
+$app->post('/boisson/suppression/{idBoisson}', [$boissonControleur, 'Suppression']);
 $app->get('/boisson/editer/{idBoisson}', [$boissonControleur, 'Editer']);
-$app->get('/boisson/modifier/{idBoisson}', [$boissonControleur, 'Modifier']);
-*/
+$app->post('/boisson/modifier/{idBoisson}', [$boissonControleur, 'Modifier']);
+
 $app->get('/categorie', [$categorieControleur, 'Accueil']);
 $app->get('/categorie/creation', [$categorieControleur, 'Creation']);
 $app->post('/categorie/creer', [$categorieControleur, 'Creer']);

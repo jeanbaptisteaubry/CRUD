@@ -9,6 +9,7 @@ use Slim\Http\Request;
 $app = AppFactory::create();
 $boissonControleur = new \App\Controleur\Controleur_Boisson($entityManager);
 $categorieControleur = new \App\Controleur\Controleur_Categorie($entityManager);
+$utilisateurControleur = new \App\Controleur\Controleur_Utilisateur($entityManager);
 
 
 $app->get('/boisson', [$boissonControleur, 'Accueil']);
@@ -24,6 +25,10 @@ $app->post('/categorie/creer', [$categorieControleur, 'Creer']);
 $app->post('/categorie/suppression/{idCategorie}', [$categorieControleur, 'Suppression']);
 $app->get('/categorie/editer/{idCategorie}', [$categorieControleur, 'Editer']);
 $app->post('/categorie/modifier/{idCategorie}', [$categorieControleur, 'Modifier']);
+
+$app->get('/utilisateur', [$utilisateurControleur, 'Accueil']);
+$app->get('/utilisateur/creation', [$utilisateurControleur, 'Creation']);
+$app->post('/utilisateur/creer', [$utilisateurControleur, 'Creer']);
 
 
 $app->run();

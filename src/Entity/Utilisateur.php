@@ -30,10 +30,11 @@ class Utilisateur
     #[ManyToOne(targetEntity: CategorieUtilisateur::class, inversedBy: 'utilisateurs')]
     private CategorieUtilisateur $categorieUtilisateur;
 
-    public function __construct(string $nomUtilisateur, string $motDePasseHash)
+    public function __construct(string $nomUtilisateur, string $motDePasseHash, CategorieUtilisateur $categorieUtilisateur)
     {
         $this->nomUtilisateur = $nomUtilisateur;
         $this->motDePasseHash = $motDePasseHash;
+        $this->categorieUtilisateur = $categorieUtilisateur;
     }
     public function getId(): int|null
     {

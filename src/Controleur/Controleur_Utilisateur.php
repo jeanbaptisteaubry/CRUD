@@ -2,6 +2,7 @@
 
 namespace App\Controleur;
 
+use App\Entity\CategorieUtilisateur;
 use App\Entity\Utilisateur;
 use App\Entity\Boisson;
 use App\Vue\Vue_BasDePage;
@@ -60,9 +61,10 @@ class Controleur_Utilisateur
                     $existingUser = $this->entityManager->getRepository(Utilisateur::class)->findOneBy(['nomUtilisateur' => $nom]);
 
                     if (!$existingUser) {
+                        $categorieUtilisateur = $this->entityManager->getRepository(CategorieUtilisateur::class)->findOneBy(['id' => 1]);
 
                         //Création de l'utilisateur
-                        $utilisateur = new Utilisateur($nom, password_hash($motdepasse1, PASSWORD_DEFAULT));
+                        $utilisateur = new Utilisateur($nom, password_hash($motdepasse1, PASSWORD_DEFAULT, ), $categorieUtilisateur);
 
                         //Sauvegarde en base de données
                         $this->entityManager->persist($utilisateur);

@@ -10,6 +10,15 @@ $app = AppFactory::create();
 $boissonControleur = new \App\Controleur\Controleur_Boisson($entityManager);
 $categorieControleur = new \App\Controleur\Controleur_Categorie($entityManager);
 $utilisateurControleur = new \App\Controleur\Controleur_Utilisateur($entityManager);
+$accueilControleur = new \App\Controleur\Controleur_Accueil($entityManager);
+
+$app->get('/', [$accueilControleur, 'Accueil']);
+$app->get('/connexion', [$accueilControleur, 'Connexion']);
+$app->post('/seconnecter', [$accueilControleur, 'Seconnecter']);
+$app->get('/deconnexion', [$accueilControleur, 'Deconnexion']);
+$app->get('/sinscrire', [$accueilControleur, 'Sinscrire']);
+
+
 
 
 $app->get('/boisson', [$boissonControleur, 'Accueil']);
@@ -32,6 +41,7 @@ $app->post('/utilisateur/creer', [$utilisateurControleur, 'Creer']);
 $app->post('/utilisateur/supprimer/{idUtilisateur}', [$utilisateurControleur, 'Supprimer']);
 $app->post('/utilisateur/changerMDP/{idUtilisateur}', [$utilisateurControleur, 'changerMDP']);
 $app->post('/utilisateur/validerchangermdp/{idUtilisateur}', [$utilisateurControleur, 'validerchangermdp']);
+
 
 
 

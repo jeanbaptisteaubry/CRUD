@@ -24,9 +24,13 @@ class Categorie
     #[Column(type: 'string', length: 255)]
     private string $libelle;
 
+    #[OneToMany(targetEntity: Boisson::class, mappedBy: 'categorie', indexBy: 'id')]
+    private Collection $boissons;
+
     public function __construct(string $libelle)
     {
         $this->libelle = $libelle;
+        $this->boissons = new ArrayCollection();
     }
     public function getId(): int|null
     {
@@ -39,5 +43,11 @@ class Categorie
     public function setLibelle(string $libelle): void
     {
         $this->libelle = $libelle;
+    }
+
+    /** @return array<int, Boisson> */
+    public function getBoissons(): array
+    {
+        return $this->boissons->toArray();
     }
 }

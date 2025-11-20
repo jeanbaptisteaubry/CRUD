@@ -29,6 +29,11 @@ $app->post('/categorie/modifier/{idCategorie}', [$categorieControleur, 'Modifier
 $app->get('/utilisateur', [$utilisateurControleur, 'Accueil']);
 $app->get('/utilisateur/creation', [$utilisateurControleur, 'Creation']);
 $app->post('/utilisateur/creer', [$utilisateurControleur, 'Creer']);
+$app->post('/utilisateur/supprimer/{idUtilisateur}', [$utilisateurControleur, 'Supprimer']);
+$app->post('/utilisateur/changerMDP/{idUtilisateur}', [$utilisateurControleur, 'changerMDP']);
+$app->post('/utilisateur/validerchangermdp/{idUtilisateur}', [$utilisateurControleur, 'validerchangermdp']);
+
+
 
 
 $app->run();

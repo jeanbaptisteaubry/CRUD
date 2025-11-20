@@ -12,11 +12,20 @@ class Vue_ListeUtilisateur
     <tr>
         <th>Nom d'utilisateur</th> 
         <th>Catégorie utilisateur</th> 
+        <th>action</th> 
     </tr>";
         foreach ($tableauUtilisateur as $utilisateur) {
             $str .= "<tr>
             <td>" . $utilisateur->getNomUtilisateur() . "</td>
             <td>" . $utilisateur->getCategorieUtilisateur()->getLibelle() . "</td>
+            <td>
+                <form action='/utilisateur/supprimer/". $utilisateur->getId()."' method='post'>
+                <button type='submit'>Supprimer</button>
+                </form>
+                <form action='/utilisateur/changerMDP/". $utilisateur->getId()."' method='post'>
+                <button type='submit'>Changer mot de passe</button>
+                </form>
+            </td>
         </tr>";
         }
         $str .= "</table>

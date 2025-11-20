@@ -25,14 +25,18 @@ class Utilisateur
     private string $nomUtilisateur;
 
     #[Column(type: 'string', length: 255)]
+    private string $mailUtilisateur;
+
+    #[Column(type: 'string', length: 255)]
     private string $motDePasseHash;
 
     #[ManyToOne(targetEntity: CategorieUtilisateur::class, inversedBy: 'utilisateurs')]
     private CategorieUtilisateur $categorieUtilisateur;
 
-    public function __construct(string $nomUtilisateur, string $motDePasseHash, CategorieUtilisateur $categorieUtilisateur)
+    public function __construct(string $nomUtilisateur, string $mailUtilisateur, string $motDePasseHash, CategorieUtilisateur $categorieUtilisateur)
     {
         $this->nomUtilisateur = $nomUtilisateur;
+        $this->mailUtilisateur = $mailUtilisateur;
         $this->motDePasseHash = $motDePasseHash;
         $this->categorieUtilisateur = $categorieUtilisateur;
     }
@@ -48,6 +52,15 @@ class Utilisateur
     {
         $this->nomUtilisateur = $nomUtilisateur;
     }
+      public function getMailUtilisateur(): string
+    {
+        return $this->mailUtilisateur;
+    }
+    public function setMailUtilisateur(string $mailUtilisateur): void
+    {
+        $this->mailUtilisateur = $mailUtilisateur;
+    }
+
     public function getMotDePasseHash(): string
     {
         return $this->motDePasseHash;
